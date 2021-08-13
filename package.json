@@ -19,8 +19,8 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "preserver-start": "node ./api/createMockDb.js",
-    "server-start": "node ./api/apiServer.js",
+    "preserver-start": "node ./api-mock-server/createMockDb.js",
+    "server-start": "node ./api-mock-server/apiServer.js",
     "start": "react-scripts start & npm run server-start",
     "build": "react-scripts build",
     "test": "react-scripts test",
