@@ -1,29 +1,30 @@
 import React from "react";
-import Spinner from "react-bootstrap/Spinner";
 import useFetch from "../Services/useFetch";
+import { Link, useRouteMatch } from "react-router-dom";
+import CustomSpinner from "../Shared/CustomSpinner";
 
 export default function Courses() {
   const { data: courses, error, loading } = useFetch("courses");
-
+  const { path, url } = useRouteMatch();
+  console.log(`Path: ${path}, Url: ${url}`);
   if (error) throw error;
 
   if (loading) {
     return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <CustomSpinner />
     );
   }
 
   const coursesList = courses.map((c) => {
     return (
-        <tr key={c.id.toString()}>
-          <td>{c.id}</td>
-          <td>{c.title}</td>
-          <td>{c.category}</td>
-        </tr>
+      <tr key={c.id.toString()}>
+        <td>{c.id}</td>
+        <td><Link to={`${url}courses/${c.id}`}>{c.title}</Link></td>
+        <td>{c.category}</td>
+      </tr>
     );
   });
+
   return (
     <table className="table">
       <thead>
