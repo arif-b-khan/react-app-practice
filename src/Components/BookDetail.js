@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../Services/useFetch';
 import CustomSpinner from "../Shared/CustomSpinner";
 
-function CourseDetail(props) {
-    const { courseid } = useParams();
-    const {data: course, error, loading} = useFetch(`courses/${courseid}`);
+function BookDetail(props) {
+    const { bookid } = useParams();
+    const {data: book, error, loading} = useFetch(`books/${bookid}`);
 
     if(error) throw error;
     if(loading) return <CustomSpinner />
@@ -13,9 +13,9 @@ function CourseDetail(props) {
 
     return (
         <div>
-        <p>{course.title}</p>      
+        <p>{book.title}</p>      
         </div>
     );
 }
 
-export default CourseDetail;
+export default BookDetail;

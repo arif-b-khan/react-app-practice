@@ -2,6 +2,7 @@ const courses = [
     {
       id: 1,
       title: "Securing React Apps with Auth0",
+      description: "Description",
       slug: "react-auth0-authentication-security",
       authorId: 1,
       category: "JavaScript"
@@ -70,6 +71,16 @@ const courses = [
       category: "HTML5"
     }
   ];
+
+  const books = [
+    {
+      id: 1,
+      title: "Book 1",
+      description: "Test book",
+      authorId: 1,
+      category: "Test"
+    }
+  ]
   
   const authors = [
     { id: 1, name: "Cory House" },
@@ -88,6 +99,7 @@ const courses = [
   module.exports = {
     newCourse,
     courses,
-    authors
+    authors,
+    books
   };
   
