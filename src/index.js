@@ -1,18 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import "./custom.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ErrorBoundary from "./Shared/ErrorBoundary";
 
+const queryClient = QueryClient();
+
 ReactDOM.render(
   <ErrorBoundary>
     <Router>
-      <App />
+      <React.StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen="true" />
+          <App />
+        </QueryClientProvider>
+      </React.StrictMode>
     </Router>
-  </ErrorBoundary>
-  ,
+  </ErrorBoundary>,
   document.getElementById("root")
 );
 
