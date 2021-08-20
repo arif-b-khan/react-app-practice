@@ -1,4 +1,3 @@
-// @flow
 import { useQuery } from "react-query";
 
 const baseUrl = "http://localhost:3001/";
@@ -30,7 +29,7 @@ const baseUrl = "http://localhost:3001/";
 //   return { data, error, loading };
 // }
 
-export default function useFetch(path:number) {
+export default function useFetch(path){
   return useQuery(path, () => {
     return fetch(`${baseUrl}${path}`).then((res) => res.json());
   });

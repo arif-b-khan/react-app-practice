@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "express": "^4.17.1",
-    "flow-bin": "^0.158.0",
     "nodemon": "^2.0.12"
   },
   "scripts": {

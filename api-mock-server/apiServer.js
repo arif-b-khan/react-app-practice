@@ -20,15 +20,18 @@ const router = jsonServer.router(path.join(__dirname, "db.json"));
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults({
   // Display json-server's built in homepage when json-server starts.
-  static: "node_modules/json-server/dist"
+  static: "node_modules/json-server/dist",
 });
-console.log("Path:")
-console.log(path.join(__dirname, 'public'));
-server.use('/static', express.static(path.join(__dirname, 'public')));
+console.log("Path:");
+console.log(path.join(__dirname, "public"));
+server.use("/static", express.static(path.join(__dirname, "public")));
 
 server.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 // Set default middlewares (logger, static, cors and no-cache)
@@ -38,7 +41,7 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
-server.use(function(req, res, next) {
+server.use(function (req, res, next) {
   setTimeout(next, 500);
 });
 
@@ -63,8 +66,17 @@ server.use((req, res, next) => {
 //   }
 // });
 
-server.post("/books/", function(req, res, next){
+server.post("/books/", function (req, res, next) {
   const error = validateBook(req.body);
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    next();
+  }
+});
+
+server.post("/authors", function (req, res, next) {
+  const error = validateAuthor(req.body);
   if (error) {
     res.status(400).send(error);
   } else {
@@ -91,14 +103,12 @@ function createSlug(value) {
     .toLowerCase();
 }
 
-function validateCourse(course) {
-  if (!course.title) return "Title is required.";
-  if (!course.authorId) return "Author is required.";
-  if (!course.category) return "Category is required.";
+function validateAuthor(course) {
+  if (!course.name) return "Name is required.";
   return "";
 }
 
-function validateBook(book){
+function validateBook(book) {
   if (!book.title) return "Title is required.";
   if (!book.authorId) return "Author is required.";
   if (!book.description) return "Description is required";

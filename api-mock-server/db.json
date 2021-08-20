@@ -1,1 +1,30 @@
-{"books":[{"id":1,"title":"Book 1","description":"Test book","authorId":1,"category":"Test"}],"authors":[{"id":1,"name":"Cory House"},{"id":2,"name":"Scott Allen"},{"id":3,"name":"Dan Wahlin"}]}
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Book 1",
+      "description": "Test book",
+      "authorId": 1,
+      "category": "Test"
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Cory House"
+    },
+    {
+      "id": 2,
+      "name": "Scott Allen"
+    },
+    {
+      "id": 3,
+      "name": "Dan Wahlin"
+    },
+    {
+      "name": "Mahad Khan",
+      "createdAt": 1629445517450,
+      "id": 4
+    }
+  ]
+}
