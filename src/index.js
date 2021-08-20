@@ -8,7 +8,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ErrorBoundary from "./Shared/ErrorBoundary";
 
-const queryClient = QueryClient();
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <ErrorBoundary>

@@ -6,17 +6,18 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 
 
 export default function Books() {
-  const { data: books, error, loading } = useFetch("books");
+  const { data, error, isLoading } = useFetch("books");
+  const books = data;
   const { path, url } = useRouteMatch();
   const history = useHistory();
   console.log(`Path: ${path}, Url: ${url}`);
   if (error) throw error;
 
-  if (loading) {
+  if (isLoading) {
     return <CustomSpinner />;
   }
 
-  const bookList = books.map((c) => {
+  const bookList = books && books.map((c) => {
     return (
       <a href={`books/${c.id}`}>
         <Col>
@@ -37,7 +38,7 @@ export default function Books() {
 
   return (
     <div>
-      <div style={{"text-align":"right"}}>
+      <div style={{"textAlign":"right"}}>
       <Button variant="primary" className="Add-Button" onClick={() => history.push("/books/add/0")}>Add Book</Button>
       </div>
       <Row xs={1} md={6} className="g-4">
