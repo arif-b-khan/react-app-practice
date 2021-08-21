@@ -5,6 +5,15 @@
 $body-bg: #fff;
 $body-color: #111;
 
+.myapp-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+
+
 // // Required
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
